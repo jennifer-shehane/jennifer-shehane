@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          A Quick Guide to Sublime Text - Jennifer Shehane
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/A-Quick-Guide-to-Sublime-Text/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jennifer Shehane</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#sublime" title="sublime">sublime</a>
+                        
+                    </div>
+                    <h1>A Quick Guide to Sublime Text</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Jennifer Shehane on
+                        04-14-2014
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>I arguably spend more than 90% of my workday working in my text editor. Knowing how to become faster and more proficient in <a href="http://www.sublimetext.com/" target="_blank" rel="external">Sublime Text</a> has saved me a great deal of time and headache every day. In this guide I’ve outlined the resources needed to make the most out of using Sublime Text. As of this writing, I am using Sublime Text 3.</p>
+<h2 id="Get-to-know-Sublime-Text"><a href="#Get-to-know-Sublime-Text" class="headerlink" title="Get to know Sublime Text"></a>Get to know Sublime Text</h2><p>Nettuts has a free screencast focusing on the perfect workflow for Sublime Text. The first 1/3 of the video should be a requirement for anyone using Sublime, but honestly it’s all incredibly useful. <a href="https://tutsplus.com/course/improve-workflow-in-sublime-text-2/" target="_blank" rel="external">Perfect Workflow in Sublime Text</a></p>
+<h3 id="Keyboard-Shortcuts"><a href="#Keyboard-Shortcuts" class="headerlink" title="Keyboard Shortcuts"></a>Keyboard Shortcuts</h3><p>If you want to master some shortcuts, try <a href="https://www.shortcutfoo.com/app/tutorial/sublimetext" target="_blank" rel="external">ShortcutFoo</a>. Their interactive app let’s you practice, drill, then be tested on most keyboard shortcuts. They also cover other disciplines like Vim, Git, and Photoshop.</p>
+<p><img src="practice-sublime-text-shortcuts-in-shortcutfoo.jpg" alt=""></p>
+<p>For a short list of some default shortcuts, go here: <a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html" target="_blank" rel="external">Sublime Text OSX Keyboard Shortcuts</a></p>
+<p><em>For reference: <super> is Windows key on Windows, ⌘ on Mac.</super></em></p>
+<p><strong>Here are some of my favorite:</strong></p>
+<ul>
+<li><super> + <ctrl> + g - This will highlight every instance of a highlighted word. Great as a “find and replace” for the file you are currently on.</ctrl></super></li>
+<li><super> + g - Find next.</super></li>
+<li><super> + <shift> + v - Paste and indent.</shift></super></li>
+<li><super> + <ctrl> + ↑ - Swap line up.</ctrl></super></li>
+<li><super> + <ctrl> + ↓ - Swap line down.</ctrl></super></li>
+<li><super> + <shift> + d - Duplicate line.</shift></super></li>
+<li><super> + / - Comment out current selection.</super></li>
+<li><super> + <alt> + # - Sets layout to number of panes specified. (<super> + <alt> + 2 will be 2 panes).</alt></super></alt></super></li>
+</ul>
+<h4 id="CheatSheet"><a href="#CheatSheet" class="headerlink" title="CheatSheet"></a>CheatSheet</h4><p>If you want to see every shortcut available in Sublime Text, download <a href="http://www.grandtotal.biz/CheatSheet/" target="_blank" rel="external">CheatSheet (for Mac)</a>. After downloading, just hold the ⌘ key for a few seconds to get a list of all active shortcuts of the current application.</p>
+<h3 id="Custom-Key-Bindings"><a href="#Custom-Key-Bindings" class="headerlink" title="Custom Key Bindings"></a>Custom Key Bindings</h3><p>Add any specific key bindings into the User Keybindings file. To edit this file go to the main menu, select <code>Preferences</code> then <code>Keybindings - User</code>. Below is another one of my favorite key bindings.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">   &#123; &quot;keys&quot;: [&quot;alt+shift+r&quot;], &quot;command&quot;: &quot;reveal_in_side_bar&quot;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="Custom-User-Settings"><a href="#Custom-User-Settings" class="headerlink" title="Custom User Settings"></a>Custom User Settings</h3><p>Add custom settings into the User Settings file. To edit this file go to the main menu, select <code>Preferences</code> then <code>Settings - User</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;always_show_minimap_viewport&quot;: false,</span><br><span class="line">  &quot;bold_folder_labels&quot;: true,</span><br><span class="line">  &quot;expand_tabs_on_save&quot;: true,</span><br><span class="line">  &quot;font_size&quot;: 13,</span><br><span class="line">  &quot;highlight_line&quot;: true,</span><br><span class="line">  &quot;ignored_packages&quot;:</span><br><span class="line">  [</span><br><span class="line">    &quot;Vintage&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;preview_on_click&quot;: true,</span><br><span class="line">  &quot;tab_size&quot;: 2,</span><br><span class="line">  &quot;trailing_spaces_include_current_line&quot;: false,</span><br><span class="line">  &quot;translate_tabs_to_spaces&quot;: true,</span><br><span class="line">  &quot;trim_trailing_white_space_on_save&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Working-with-Projects"><a href="#Working-with-Projects" class="headerlink" title="Working with Projects"></a>Working with Projects</h3><p>The quickest way to get started coding with all the necessary files needed, is to use Projects. Projects in Sublime Text are made up of two files: the <code>sublime-project</code> file, which contains the project definition, and the <code>sublime-workspace</code> file, which contains user specific data, such as the open files and the modifications to each.</p>
+<p>To save a project, open Sublime Text and drag the desired folder into the sidebar (or on Mac drag it directly into the Dock’s icon). Go to <code>Project</code> and choose <code>Save Project As</code>.</p>
+<p>Now, while the project is open, to access the sublime-project file, go to Project then choose Edit Project.</p>
+<p>Sublime-project files are JSON, and support three top level sections: <code>folders</code>, for the included folders, <code>settings</code>, for file-setting overrides, and <code>build_systems</code>, for project specific build systems. An example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;folders&quot;:</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;follow_symlinks&quot;: true,</span><br><span class="line">      &quot;path&quot;: &quot;application&quot;,</span><br><span class="line">      &quot;file_exclude_patterns&quot;: [&quot;.*&quot;, &quot;*.log&quot;],</span><br><span class="line">      &quot;folder_exclude_patterns&quot;: [&quot;tmp&quot;, &quot;log&quot;, &quot;.*&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Any folders or files excluded within your project will no longer be searched when using Show Overlay (<code>super</code> + <code>t</code>). It’s a good idea to exclude the <code>tmp</code> folder and <code>log</code> folders so that you don’t open and make changes to files in these folders accidentally.</p>
+<p>To switch between projects while in Sublime Text:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;super&gt; + &lt;ctrl&gt; + p</span><br></pre></td></tr></table></figure>
+<h3 id="Exclude-Include-Folders-from-Find"><a href="#Exclude-Include-Folders-from-Find" class="headerlink" title="Exclude / Include Folders from Find"></a>Exclude / Include Folders from Find</h3><p>I’ve often needed to do a Find All, while excluding specific folders from my search. In the Where: field of the Find, you can use regular expression to <strong>exclude</strong> folders. Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-*/application/dev/*,-*/bower_components/*,-*/tmp/*,-*/node_modules/*,-*/application/test/*</span><br></pre></td></tr></table></figure>
+<p><img src="exclude-folder-paths-from-find-in-sublime-text.jpg" alt=""></p>
+<blockquote>
+<p>Exclude folder paths from Find in Sublime Text</p>
+</blockquote>
+<p>By the same method you can specify which folders to <strong>include</strong>. Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/application/*</span><br></pre></td></tr></table></figure>
+<h2 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h2><p>There are many useful packages for Sublime Text that you can use, but first you’ll need to download <a href="https://packagecontrol.io/installation" target="_blank" rel="external">Sublime Package Control</a>.</p>
+<p>To open the Package Control command palette, after installation click <code>&lt;Cmd&gt;</code> + <code>&lt;Shift&gt;</code> + <code>P</code> or access via the Preferences menu.</p>
+<h3 id="Helpful-Packages"><a href="#Helpful-Packages" class="headerlink" title="Helpful Packages"></a>Helpful Packages</h3><p>This is a list of packages I’ve found helpful through my projects.</p>
+<h4 id="Syntax-Highlighting"><a href="#Syntax-Highlighting" class="headerlink" title="Syntax Highlighting"></a>Syntax Highlighting</h4><ul>
+<li><a href="https://github.com/sustained/CoffeeScript-Sublime-Plugin" target="_blank" rel="external">Coffeescript</a> - Properly highlights code in Coffeescript.</li>
+<li><a href="https://github.com/davidjrice/sublime-eco" target="_blank" rel="external">Eco</a> - Properly highlight code in Embedded Coffeescript.</li>
+<li><a href="https://github.com/drewda/cucumber-sublime-bundle" target="_blank" rel="external">Cucumber</a> - Properly highlight code in cucumber.</li>
+<li><a href="https://github.com/SublimeText/RSpec" target="_blank" rel="external">RSpec</a> - Properly highlight code in RSpec.</li>
+<li><a href="https://github.com/nathos/sass-textmate-bundle" target="_blank" rel="external">Sass</a> - Properly highlight code in Sass or SCSS files.</li>
+</ul>
+<h4 id="Color-Theme"><a href="#Color-Theme" class="headerlink" title="Color Theme"></a>Color Theme</h4><ul>
+<li><a href="https://github.com/tdm00/sublime-theme-railscasts" target="_blank" rel="external">Railscast Color Scheme</a> - Just a color scheme. It’s easy on the eyes!</li>
+</ul>
+<p><img src="railscast-color-scheme.jpg" alt=""></p>
+<blockquote>
+<p>Railscast Color Scheme. Code from <a href="http://www.planetexpressapp.com" target="_blank" rel="external">http://www.planetexpressapp.com</a></p>
+</blockquote>
+<h4 id="Sublime-Text-Extensions"><a href="#Sublime-Text-Extensions" class="headerlink" title="Sublime Text Extensions"></a>Sublime Text Extensions</h4><ul>
+<li><a href="https://github.com/titoBouzout/SideBarEnhancements/tree/st3" target="_blank" rel="external">Sidebar Enhancements</a> - This adds extra options when you right-click on a file in the sidebar including Open with.., Delete, Rename, and Move.</li>
+<li><a href="https://github.com/SublimeText/TrailingSpaces" target="_blank" rel="external">TrailingSpaces</a> - Automatically trims whitespace on save</li>
+</ul>
+<h4 id="CoffeeScript"><a href="#CoffeeScript" class="headerlink" title="CoffeeScript"></a>CoffeeScript</h4><p><a href="https://github.com/surjikal/sublime-coffee-compile" target="_blank" rel="external">CoffeeCompile</a> - This has become one of my favorite packages since recently learning CoffeeScript. It compiles CoffeeScript directly in Sublime Text. To use the plugin, highlight your CoffeeScript and hit <super> + <shift> + c.</shift></super></p>
+<p><img src="compile-coffeescript-in-sublimg-text.jpg" alt=""></p>
+<blockquote>
+<p>Compile CoffeeScript directly in Sublime Text with CoffeeCompile.</p>
+</blockquote>
+<h4 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h4><ul>
+<li><p><a href="https://github.com/danielfrey/sublime-cucumber-step-finder" target="_blank" rel="external">Cucumber Step Finder</a> - Navigate easily to your cucumber steps. Type <code>&lt;super&gt;</code> + <code>y</code> and begin typing the step text to see results. Must setup the proper path to features in the settings. (See link for instructions).</p>
+<p><img src="cucumber-step-finder.jpg" alt=""></p>
+<blockquote>
+<p>Cucumber Step Finder finds all matching Cucumber steps.</p>
+</blockquote>
+</li>
+<li><p><a href="https://github.com/SublimeText/RSpec" target="_blank" rel="external">Rspec</a> - Allows you to switch between models and controllers by <super> + ,. Has snippets for writing tests as well.</super></p>
+</li>
+<li><a href="https://github.com/maltize/sublime-text-2-ruby-tests" target="_blank" rel="external">Ruby Tests</a> - Allows running of single or whole file RSpec based tests (including Cucumber) via shortcuts.</li>
+<li><a href="https://github.com/dzhibas/SublimePrettyJson" target="_blank" rel="external">SublimePrettyJson</a> - Formats JSON. We use JSON to mock data for use in <a href="http://sinonjs.org/" target="_blank" rel="external">Sinon.js</a>. To format, through Command Palette <code>ctrl</code> + <code>shift</code> + <code>p</code> select “Pretty JSON: Format (Pretty Print) JSON”.</li>
+</ul>
+<h4 id="Git-amp-GitHub"><a href="#Git-amp-GitHub" class="headerlink" title="Git &amp; GitHub"></a>Git &amp; GitHub</h4><ul>
+<li><a href="https://github.com/ehamiter/GitHubinator" target="_blank" rel="external">Githubinator</a> - Allows you to right click within any file and go directly to its GitHub url. This is useful to quickly search the history of a file or do the dreaded GitHub blame on a specific line of code.</li>
+<li><a href="https://github.com/jisaacks/GitGutter" target="_blank" rel="external">Git Gutter</a> - Shows icons in the gutter of your file indicating whether a line has been inserted, modified or deleted.</li>
+</ul>
+<h4 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h4><ul>
+<li><a href="https://github.com/kemayo/sublime-text-2-goto-documentation" target="_blank" rel="external">Goto Documentation</a> - Opens appropriate documentation in the browser on highlight of Ruby on Rails, JavaScript, CoffeeScript and more.</li>
+<li><a href="https://github.com/farcaller/DashDoc" target="_blank" rel="external">Dash Doc</a> - Open the selected code within the Dash documentation. You will need to download <a href="https://kapeli.com/dash" target="_blank" rel="external">Dash</a>, but it’s so worth it. I use it everyday. It’s worth a purchase although there is a free version.</li>
+</ul>
+<h4 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h4><ul>
+<li><a href="https://github.com/vkocubinsky/SublimeTableEditor" target="_blank" rel="external">Table Editor</a> - This package is essential for formatting Markdown tables. I know, how often do you need this? Apparently a lot when you’re writing API docs in Markdown. Just setup your table headers in a Markdown file and hit tab to go through each row and column as you fill it in. It will automatically format.</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">|  Action  | Method | Url | Auth |</span><br><span class="line">| -------- | ------ | --- | ---- |</span><br><span class="line">| Get User | GET    | _   |      |</span><br></pre></td></tr></table></figure>
+<h3 id="Integration-with-Other-Applications"><a href="#Integration-with-Other-Applications" class="headerlink" title="Integration with Other Applications"></a>Integration with Other Applications</h3><ul>
+<li><a href="https://github.com/franzheidl/alfred-workflows/tree/master/open-with-sublime-text" target="_blank" rel="external">Afred Workflow</a> - Open files or a folders in Sublime Text from <a href="https://www.alfredapp.com/" target="_blank" rel="external">Alfred</a> by using a Keyword <code>subl</code> or by file/folder action. You will have to purchase Alfred to use workflows (another worthy purchase in my opinion).</li>
+<li><a href="https://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank" rel="external">OS X Command Line</a> - Instructions on how to open files in Sublime Text directly from command line.</li>
+<li><a href="https://help.github.com/articles/associating-text-editors-with-git/" target="_blank" rel="external">Git</a> - Instructions on how to set Sublime Text as your default text editor for Git.</li>
+</ul>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/Resources-for-Learning-CoffeeScript/" data-toggle="tooltip" data-placement="top" title="Resources for Learning CoffeeScript">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/Sass-Mixin-for-Setting-Column-Widths-on-Tables/" data-toggle="tooltip" data-placement="top" title="Sass Mixin for Setting Column Widths on Tables">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jennifer-shehane";
+    var disqus_identifier = "http://yoursite.com/A-Quick-Guide-to-Sublime-Text/";
+    var disqus_url = "http://yoursite.com/A-Quick-Guide-to-Sublime-Text/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/jennifershehane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jennifer-shehane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Jennifer Shehane 2017 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Resources for Learning CoffeeScript - Jennifer Shehane
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/Resources-for-Learning-CoffeeScript/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jennifer Shehane</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#coffeescript" title="coffeescript">coffeescript</a>
+                        
+                    </div>
+                    <h1>Resources for Learning CoffeeScript</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Jennifer Shehane on
+                        04-23-2014
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="CoffeeScript"><a href="#CoffeeScript" class="headerlink" title="CoffeeScript"></a>CoffeeScript</h2><p>CoffeeScript is a little language that compiles into JavaScript. While there is a lot of <a href="https://lostechies.com/bradcarleton/2013/10/23/coffeescript-vs-javascript-dog-eat-dog/" target="_blank" rel="external">debate</a> online about the pros and cons of using CoffeeScript, I’ve decided to just focus on talking about some resources I used to learn this little <a href="https://www.youtube.com/watch?v=RoPnnkYg9nI&amp;gl=US&amp;hl=en" target="_blank" rel="external">loved</a> and much <a href="https://ceronman.com/2012/09/17/coffeescript-less-typing-bad-readability/" target="_blank" rel="external">hated</a> language.</p>
+<h3 id="Coffee-Console-Google-Chrome-extension"><a href="#Coffee-Console-Google-Chrome-extension" class="headerlink" title="Coffee Console - Google Chrome extension"></a>Coffee Console - Google Chrome extension</h3><p><a href="https://chrome.google.com/webstore/detail/coffeeconsole/ladbkfdlnaibelfidknofapbbdlhadfp?hl=en-US" target="_blank" rel="external">https://chrome.google.com/webstore/detail/coffeeconsole/ladbkfdlnaibelfidknofapbbdlhadfp?hl=en-US</a> <em>(Free)</em></p>
+<p>You’ll want to install this Google Chrome extension before getting started. It’s essentially <a href="http://js2.coffee/" target="_blank" rel="external">js2coffee</a> in reverse. It compiles CoffeeScript into JavaScript as you type. Another advantage of using the compiler in your browser is that you can quickly pull in other libraries. For example, visiting <a href="http://underscorejs.org/" target="_blank" rel="external">Underscore.js</a> allows you to write some Underscore in your CoffeeScript after running it in the console.</p>
+<p><img src="coffeeconsole-output-in-chrome.jpg" alt=""></p>
+<blockquote>
+<p>See CoffeeScript compiled into JavaScript instantly. After running the code, you can use available libraries in the console.</p>
+</blockquote>
+<h3 id="The-Little-Book-on-CoffeeScript"><a href="#The-Little-Book-on-CoffeeScript" class="headerlink" title="The Little Book on CoffeeScript"></a>The Little Book on CoffeeScript</h3><p><a href="http://arcturo.github.io/library/coffeescript/" target="_blank" rel="external">http://arcturo.github.io/library/coffeescript/</a> <em>(Free Online / Paid Paperback)</em></p>
+<p>I read through this book with my Google Chrome extension open. I took <a href="https://twitter.com/maccaw" target="_blank" rel="external">Alex McCaw</a>’s advice and wrote every single line of the book to see how they translate into JavaScript. This book will begin to familiarize you with some essential CoffeeScript syntax (<code>@</code> is <code>this.</code>, <code>-&gt;</code> is a function call, <code>=&gt;</code> carries over the context of <code>this</code> into the function, etc).</p>
+<h3 id="CoffeeScript-Docs"><a href="#CoffeeScript-Docs" class="headerlink" title="CoffeeScript Docs"></a>CoffeeScript Docs</h3><p><a href="http://coffeescript.org/" target="_blank" rel="external">http://coffeescript.org/</a> <em>(Free)</em></p>
+<p>The CoffeeScript docs were pretty clear and concise on the specific functionality that CoffeeScript offers and how it translates into JavaScript.</p>
+<h3 id="CoffeeScript-Ristretto"><a href="#CoffeeScript-Ristretto" class="headerlink" title="CoffeeScript Ristretto"></a>CoffeeScript Ristretto</h3><p><a href="https://leanpub.com/coffeescript-ristretto" target="_blank" rel="external">https://leanpub.com/coffeescript-ristretto</a> <em>(Free or Paid)</em></p>
+<p>This was my favorite CoffeeScript read by far. <a href="https://twitter.com/raganwald" target="_blank" rel="external">Reginald Braithwaite</a> taught CoffeeScript to the reader as a new language instead of just translating CoffeeScript into JavaScript. This is the best book for anyone newer to learning JavaScript. It served as a review of the concepts in JavaScript, but skipped the weirdness that is JavaScript (unless that weirdness also existed in CoffeeScript). The book started from the very beginning with values and continued up through classes, closures, and canonicalization. It helped me think of CoffeeScript in it’s own light as opposed to just another layer of translation.</p>
+<h3 id="Other-Resources"><a href="#Other-Resources" class="headerlink" title="Other Resources"></a>Other Resources</h3><p>CoffeeScipt is super simple and can be learned by reading just one of the resources above. Here are some more resources I’ve encountered that can help you use CoffeeScript to it’s fullest potential.</p>
+<h4 id="More-Books-Interative-Learning"><a href="#More-Books-Interative-Learning" class="headerlink" title="More Books / Interative Learning"></a>More Books / Interative Learning</h4><ul>
+<li><p>~Essence of CoffeeScript: Syntax Shortcuts - An interative tutorial by Carbon Five that quizzes you as you learn.~ <em>Link no longer works. There is a repo <a href="https://github.com/carbonfive/hi-essence-of-coffeescript" target="_blank" rel="external">here</a> that may be the old tutorial.</em></p>
+</li>
+<li><p><a href="http://coffeescript.codeschool.com/" target="_blank" rel="external">Code School: A Sip of CoffeeScript</a> - These 6 videos and 36 code challenges cover everything from variables and functions to converting jQuery into CoffeeScript.</p>
+</li>
+<li><p><a href="http://autotelicum.github.io/Smooth-CoffeeScript/" target="_blank" rel="external">Smooth CoffeeScript</a> - An introduction to programming in CoffeeScript with an emphasis on clarity and abstraction.</p>
+</li>
+<li><p><a href="https://coffeescript-cookbook.github.io/" target="_blank" rel="external">CoffeeScript Cookbook</a> - CoffeeScript recipes for the community by the community.</p>
+</li>
+</ul>
+<h4 id="Tools-Guides"><a href="#Tools-Guides" class="headerlink" title="Tools / Guides"></a>Tools / Guides</h4><ul>
+<li><p><a href="https://github.com/surjikal/sublime-coffee-compile" target="_blank" rel="external">CoffeeCompile</a> - This little Sublime Text plugin is a great way to check what CoffeeScript is compiling into on the fly. I already wrote about it in my <a href="/a-quick-guide-to-sublime-text">guide to Sublime Text</a>.</p>
+</li>
+<li><p><a href="https://github.com/dsignr/coffeescript-style-guide" target="_blank" rel="external">CoffeeScript Style Guide</a> - Best-practices and coding conventions for the CoffeeScript programming language.</p>
+</li>
+<li><p><a href="http://abe33.github.io/spectacular/" target="_blank" rel="external">Spectacular</a> - Spectacular is a BDD framework for CoffeeScript and JavaScript that attempts to bring the power of RSpec to JavaScript.</p>
+</li>
+<li><p><a href="http://www.coffeelint.org/" target="_blank" rel="external">CoffeeLint</a> - CoffeeLint is a style checker that helps keep CoffeeScript code clean and consistent.</p>
+</li>
+</ul>
+<h4 id="Blog-Posts"><a href="#Blog-Posts" class="headerlink" title="Blog Posts"></a>Blog Posts</h4><ul>
+<li><p><a href="http://product.hubspot.com/blog/coffeescript-tricks" target="_blank" rel="external">CoffeeScript Tricks</a> - Quick blog post covering some tricks that aren’t covered in the docs.</p>
+</li>
+<li><p>~JavaScript closures, CoffeeScript do, and dont’s - This blog post explains handling closures in CoffeeScript.~ <em>Link no longer works</em></p>
+</li>
+<li><p>~Destructuring CoffeeScript one sip at a time - Destructuring in CoffeeScript is an elegant feature that makes the language feel closer to pure functional languages such as Haskell.~ <em>Link no longer works</em></p>
+</li>
+<li><p><a href="https://medium.com/@sagish/node-with-benefits-using-coffeescript-in-your-stack-e9754bf58668" target="_blank" rel="external">Node with benefits: Using CoffeeScript in your stack</a> - Some examples on how to utilize CoffeeScript in a Node environment.</p>
+</li>
+<li><p><a href="http://pewniak747.info/2013/08/24/coffeescripts-existential-operator/" target="_blank" rel="external">CoffeeScript’s Existential Operator</a> - Using CoffeeScript’s existential operator, which helps to remove most null and undefined checks.</p>
+</li>
+<li><p><a href="http://bleibinha.us/blog/2013/06/some-real-world-examples-of-coffescript-and-jquery" target="_blank" rel="external">Some Real World Examples of jQuery and CoffeeScript</a> - This post gives a short introduction to CoffeeScript and shows the use of CoffeeScript and jQuery.</p>
+</li>
+<li><p><a href="https://robots.thoughtbot.com/module-pattern-in-javascript-and-coffeescript" target="_blank" rel="external">Module Pattern in JS and CoffeeScript</a> - This post looks at the the Module Pattern, pioneered by Douglas Crockford, in both JavaScript and CoffeScript.</p>
+</li>
+<li><p><a href="https://jacopretorius.net/2013/05/10-coffeescript-features-you-might-not-know.html" target="_blank" rel="external">10 CoffeeScript Feature You Might Not Know</a> - A few CoffeeScript features that are not that well known.</p>
+</li>
+</ul>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/API-Testing-with-Runscope/" data-toggle="tooltip" data-placement="top" title="API Testing with Runscope">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/A-Quick-Guide-to-Sublime-Text/" data-toggle="tooltip" data-placement="top" title="A Quick Guide to Sublime Text">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jennifer-shehane";
+    var disqus_identifier = "http://yoursite.com/Resources-for-Learning-CoffeeScript/";
+    var disqus_url = "http://yoursite.com/Resources-for-Learning-CoffeeScript/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/jennifershehane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jennifer-shehane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Jennifer Shehane 2017 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

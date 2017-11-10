@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          API Testing with Runscope - Jennifer Shehane
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/API-Testing-with-Runscope/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jennifer Shehane</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#testing" title="testing">testing</a>
+                        
+                    </div>
+                    <h1>API Testing with Runscope</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Jennifer Shehane on
+                        05-17-2014
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><a href="https://www.runscope.com/" target="_blank" rel="external">Runscope</a> is a web application that provides a easy to use interface for testing APIs and backend services. In this post, I’m going to outline a few of the ways that I’ve been using Runscope’s automated testing feature, Radar.</p>
+<h2 id="Run-your-first-test"><a href="#Run-your-first-test" class="headerlink" title="Run your first test"></a>Run your first test</h2><p>My first impression of Runscope’s app was that anyone could write these tests. The interface allows for a language agnostic way to do a request to an API, write test assertions, and even define variables.</p>
+<p>For this example, I’m going to test our <code>/contacts</code> endpoint at <a href="https://www.inspectall.com" target="_blank" rel="external">InspectAll</a>‘s Development API. Let’s start by doing a <strong>GET</strong> to <code>/contacts</code> in order to receive all contacts for an account.</p>
+<p>All I have to do is type in my Endpoint and add a few Headers that are required for our API like <code>Content-Type</code> and <code>Authorization</code>.</p>
+<p><img src="get-requests-for-contacts.jpg" alt=""></p>
+<blockquote>
+<p>GET request for /contacts</p>
+</blockquote>
+<p>Within the assertions, I choose from the available dropdowns to select what I want the JSON returned to look like. I mostly just check for Status Code, keys, and sometimes assert a specific value or type.</p>
+<p><img src="assertions-for-data-returned.jpg" alt=""></p>
+<blockquote>
+<p>Assertions for data returned from GET to /contacts.</p>
+</blockquote>
+<p>After writing some simple assertions, now I can run my tests and see the results. I get a summary of whether my assertions passed overall, and also a line by line evaluation of whether each assertion passed or failed.</p>
+<p><img src="all-assertion-tests-passed.jpg" alt=""></p>
+<blockquote>
+<p>All assertion tests passed for our GET /contacts endpoint</p>
+</blockquote>
+<p>I can also inspect the response itself, seeing the Headers and Body of the response.</p>
+<p><img src="formatted-response-body.jpg" alt=""></p>
+<blockquote>
+<p>Formatted response body can be inspected within test runner.</p>
+</blockquote>
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>Another great feature of Runscope is the ability to easily define variables. Below, I’ve added a variable to the JSON Body of my response from my <strong>POST</strong> to our <code>/contacts</code> endpoint called <code>contactId</code>.</p>
+<p><img src="define-variable-from-json.jpg" alt=""></p>
+<blockquote>
+<p>Defining a variable from the JSON response body.</p>
+</blockquote>
+<p>Now, I can use my <code>contactId</code> variable by simply writing <code></code> within my subsequent tests. For example, I’ve placed my <code>contactId</code> variable within the url of my <strong>PUT</strong> to <code>/contacts</code> and within the id key in the body of my PUT in order to edit my newly created contact.</p>
+<p><img src="variable-now-in-subsequent-requests.jpg" alt=""></p>
+<blockquote>
+<p>The variable is now available for subsequent requests.</p>
+</blockquote>
+<p>I usually also use the variable to request a <strong>DELETE</strong> on my endpoint so that my tests can nicely clean themselves up.</p>
+<h2 id="Scripts"><a href="#Scripts" class="headerlink" title="Scripts"></a>Scripts</h2><p>The real power of Runscope’s Radar though comes from it’s Scripts feature. Scripts allow you to write Javascript to write more complex assertions or extract variables. Within Scripts, they’ve also included some incredibly useful libraries including:</p>
+<ul>
+<li><a href="http://underscorejs.org/" target="_blank" rel="external">Underscore.Js</a></li>
+<li><a href="http://chaijs.com/" target="_blank" rel="external">Chai</a> Assertion Library</li>
+<li><a href="http://momentjs.com/" target="_blank" rel="external">Moment.js</a></li>
+<li><a href="https://code.google.com/archive/p/crypto-js/" target="_blank" rel="external">CryptoJS</a></li>
+<li><a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js" target="_blank" rel="external">json2.js</a></li>
+<li><a href="https://code.google.com/archive/p/marknote/" target="_blank" rel="external">marknote XML Parser</a></li>
+</ul>
+<p>Scripts are really useful when you want to assert something a little more complicated outside of keys, values, or status codes.</p>
+<p>For example, I had to write a couple scripts to test that a reorder request was working correctly. First, I had to parse the JSON’s response body, then used Underscore’s <a href="http://underscorejs.org/#pluck" target="_blank" rel="external"><code>_.pluck</code></a> to get the id of each item in my array. Then I used Underscore’s <a href="http://underscorejs.org/#shuffle" target="_blank" rel="external"><code>_.shuffle</code></a> to reorder by ids and set that to a variable called <code>idsArrayReordered</code>.</p>
+<p><img src="using-scripts-in-runscope.jpg" alt=""></p>
+<p>After my tests are successfully run, my <code>idsArrayReordered</code> variable will be available for use on any subsequent test. Now I run my <strong>PUT</strong> request to <code>asset_statuses/reorder</code> with my shuffled id’s array.</p>
+<p><img src="send-variable-to-new-request.jpg" alt=""></p>
+<blockquote>
+<p>Sending my variable to a new PUT request.</p>
+</blockquote>
+<p>After my <strong>PUT</strong>, I do a <strong>GET</strong> for my <code>asset_statuses</code> endpoint, I write a script expecting my ids array to have been properly reordered. Here I’ve written my assertion using Chai’s BBD style of <a href="http://chaijs.com/api/bdd/" target="_blank" rel="external">expect</a>.</p>
+<p><img src="script-assertions-using-chai.jpg" alt=""></p>
+<blockquote>
+<p>Assertions written in Scripts.</p>
+</blockquote>
+<h2 id="More-Features"><a href="#More-Features" class="headerlink" title="More Features"></a>More Features</h2><p>Runscope’s API testing has a ton more features that I didn’t even cover here. They allow you to run <strong>initial Scripts</strong> and variables before a set of tests are run. This is great for sandboxing and tearing down tests. They also allow you to <strong>schedule tests</strong> to run at specific intervals from once a day down to every minute. They also have a large suite of <strong>integrations</strong> including GitHub, Heroku, CircleCI, and Jenkins so that you can set your tests to run on specific push or deployment events.</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/Code-Exercise-Mario/" data-toggle="tooltip" data-placement="top" title="Code Exercise: Mario">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/Resources-for-Learning-CoffeeScript/" data-toggle="tooltip" data-placement="top" title="Resources for Learning CoffeeScript">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jennifer-shehane";
+    var disqus_identifier = "http://yoursite.com/API-Testing-with-Runscope/";
+    var disqus_url = "http://yoursite.com/API-Testing-with-Runscope/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/jennifershehane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jennifer-shehane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Jennifer Shehane 2017 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
