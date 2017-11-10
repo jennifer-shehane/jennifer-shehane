@@ -17,12 +17,28 @@ root: /
 permalink: :title/
 permalink_defaults:
 
+  # Site settings
+SEOTitle: Jennifer Shehane
+header-img: img/home-bg.jpg
+email: shehane.jennifer@gmail.com
+keyword: ""
+
+github_username:    jennifer-shehane
+twitter_username:   jennifershehane
+
+# Build settings
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+# Disqus settings
+disqus_username: jennifer-shehane
+
+# Google Analytics
+# ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+# ga_domain: huangxuan.me
+
 # Directory
 source_dir: source
 public_dir: public
-tag_dir: tags
-archive_dir: archives
-category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -34,7 +50,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -63,9 +79,17 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: pure
+theme: huxblog
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+sidebar: false                           # whether or not using Sidebar.
+sidebar-about-description: "Hey, it me"
+sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+# Featured Tags
+featured-tags: false                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
