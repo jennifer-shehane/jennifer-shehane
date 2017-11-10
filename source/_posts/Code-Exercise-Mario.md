@@ -1,9 +1,9 @@
 ---
 title: 'Code Exercise: Mario'
-header-img: home-bg.jpg
 date: 2014-11-25 12:59:19
 subtitle:
 tags:
+  - exercise
 ---
 
 

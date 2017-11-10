@@ -1,9 +1,9 @@
 ---
 title: API Testing with Runscope
-header-img: home-bg.jpg
 date: 2014-05-17 12:58:23
 subtitle:
 tags:
+  - testing
 ---
 
 

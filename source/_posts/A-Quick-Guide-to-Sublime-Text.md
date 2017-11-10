@@ -2,6 +2,7 @@
 title: A Quick Guide to Sublime Text
 date: 2014-04-14 12:55:27
 tags:
+  - sublime
 ---
 
 I arguably spend more than 90% of my workday working in my text editor. Knowing how to become faster and more proficient in [Sublime Text](http://www.sublimetext.com/) has saved me a great deal of time and headache every day. In this guide I've outlined the resources needed to make the most out of using Sublime Text. As of this writing, I am using Sublime Text 3.

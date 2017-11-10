@@ -4,7 +4,7 @@
 
 # Site
 title: Jennifer Shehane
-subtitle:
+subtitle: Just some of my thoughts on tech.
 description:
 author: Jennifer Shehane
 language: en
@@ -12,8 +12,8 @@ timezone: America/New_York
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
-root: /
+url: http://jennifershehane.com
+root: /jennifer-shehane
 permalink: :title/
 permalink_defaults:
 
@@ -81,11 +81,6 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: huxblog
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type:
-
 sidebar: false                           # whether or not using Sidebar.
 sidebar-about-description: "Hey, it me"
 sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
@@ -93,3 +88,9 @@ sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in bot
 # Featured Tags
 featured-tags: false                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:jennifer-shehane/jennifer-shehane.git

@@ -1,9 +1,9 @@
 ---
 title: 'Code Exercise: Greedy'
-header-img: home-bg.jpg
 date: 2014-11-27 12:58:57
 subtitle:
 tags:
+  - exercise
 ---
 
 

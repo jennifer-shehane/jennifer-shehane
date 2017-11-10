@@ -1,9 +1,9 @@
 ---
 title: 'Minority Groups in Tech, is it just Reverse Discrimination?'
-header-img: home-bg.jpg
 date: 2014-04-06 13:00:44
 subtitle:
 tags:
+  - diversity
 ---
 
 

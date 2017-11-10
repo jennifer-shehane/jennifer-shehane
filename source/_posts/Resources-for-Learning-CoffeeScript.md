@@ -1,9 +1,9 @@
 ---
 title: Resources for Learning CoffeeScript
-header-img: home-bg.jpg
 date: 2014-04-23 13:01:20
 subtitle:
 tags:
+  - coffeescript
 ---
 
 

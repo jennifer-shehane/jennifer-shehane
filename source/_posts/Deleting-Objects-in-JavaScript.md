@@ -1,9 +1,9 @@
 ---
 title: Deleting Objects in JavaScript
-header-img: home-bg.jpg
 date: 2015-10-23 12:59:41
 subtitle:
 tags:
+  - javascript
 ---
 
 

@@ -1,9 +1,9 @@
 ---
 title: Sass Mixin for Setting Column Widths on Tables
-header-img: home-bg.jpg
 date: 2014-04-09 13:01:49
 subtitle:
 tags:
+  - sass
 ---
 
 
