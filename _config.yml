@@ -13,7 +13,7 @@ timezone: America/New_York
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://jennifershehane.com
-root: /jennifer-shehane
+root: /
 permalink: :title/
 permalink_defaults:
 
