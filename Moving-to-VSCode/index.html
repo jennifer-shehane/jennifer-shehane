@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A blog with some of my thoughts on tech.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Moving to VSCode - Jennifer Shehane
+        
+    </title>
+
+    <link rel="canonical" href="http://jennifershehane.com/Moving-to-VSCode/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jennifer Shehane</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jennifershehane.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Moving to VSCode</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Jennifer Shehane on
+                        03-22-2018
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>I don’t like change. I especially drag my feet when it comes to using a new tool for development. This is why I’ve been reluctant to change to VSCode from my comfy Atom IDE. Seeing the new <a href="https://insights.stackoverflow.com/survey/2018/#technology-most-popular-development-environments" target="_blank" rel="external">StackOverflow developer survey results</a> pushed me over to change finally. A majority of their users are now using Visual Studio Code. </p>
+<p>And I’m feeling the rewards from the switch pretty quickly. It wasn’t as painful as I expected, but there are a few things that needed to be sorted out to put me back into my comfy workflow. I decided to document them below. </p>
+<h1 id="Extensions"><a href="#Extensions" class="headerlink" title="Extensions"></a>Extensions</h1><h3 id="Auto-Close-Tag-⭐️⭐️"><a href="#Auto-Close-Tag-⭐️⭐️" class="headerlink" title="Auto Close Tag ⭐️⭐️"></a><a href="https://github.com/formulahendry/vscode-auto-close-tag" target="_blank" rel="external">Auto Close Tag</a> ⭐️⭐️</h3><p>After typing in the closing bracket of the opening tag, the closing tag will be inserted automatically. Not totally sure if I’m going to keep this one. It doesn’t always wrap the inner content very well in my jsx. Looking for a better recommendation. </p>
+<p><img src="https://github.com/formulahendry/vscode-auto-close-tag/raw/master/images/usage.gif" alt=""></p>
+<h3 id="Auto-Import-⭐️⭐️⭐️⭐️"><a href="#Auto-Import-⭐️⭐️⭐️⭐️" class="headerlink" title="Auto Import ⭐️⭐️⭐️⭐️"></a><a href="https://marketplace.visualstudio.com/items?itemName=steoates.autoimport" target="_blank" rel="external">Auto Import</a> ⭐️⭐️⭐️⭐️</h3><p>Automatically finds, parses and provides code actions and code completion for all available imports. </p>
+<p><img src="https://gifyu.com/images/autoimport.gif" alt=""></p>
+<h3 id="Bookmarks-⭐️"><a href="#Bookmarks-⭐️" class="headerlink" title="Bookmarks ⭐️"></a><a href="https://github.com/alefragnani/vscode-bookmarks" target="_blank" rel="external">Bookmarks</a> ⭐️</h3><p>Mark lines in the editor and easily jump to them. I haven’t used this yet, but I thought I might?</p>
+<p><img src="https://github.com/alefragnani/vscode-bookmarks/raw/master/images/bookmarks-toggle.png" alt=""></p>
+<h3 id="Bracket-Pair-Colorizer-⭐️"><a href="#Bracket-Pair-Colorizer-⭐️" class="headerlink" title="Bracket Pair Colorizer ⭐️"></a><a href="https://github.com/CoenraadS/BracketPair" target="_blank" rel="external">Bracket Pair Colorizer</a> ⭐️</h3><p>This extension allows matching brackets to be identified with colours. I actually ended up disabling this because I found it distracting, but some people really like it. </p>
+<p><img src="https://github.com/CoenraadS/BracketPair/raw/master/images/example.png" alt=""></p>
+<h3 id="Code-Spell-Checker-⭐️⭐️⭐️"><a href="#Code-Spell-Checker-⭐️⭐️⭐️" class="headerlink" title="Code Spell Checker ⭐️⭐️⭐️"></a><a href="https://github.com/Jason-Rev/vscode-spell-checker" target="_blank" rel="external">Code Spell Checker</a> ⭐️⭐️⭐️</h3><p>A basic spell checker that works well with camelCase code. I actually found a spelling error in my copy on an application when I turned this on. 😬</p>
+<h3 id="Colorize-⭐️⭐️⭐️"><a href="#Colorize-⭐️⭐️⭐️" class="headerlink" title="Colorize ⭐️⭐️⭐️"></a><a href="https://github.com/kamikillerto/vscode-colorize" target="_blank" rel="external">Colorize</a> ⭐️⭐️⭐️</h3><p>Instantly visualize css colors in your css. It’s a requirement nowadays.</p>
+<p><img src="https://raw.githubusercontent.com/kamikillerto/vscode-colorize/master/assets/demo.gif" alt=""></p>
+<h3 id="Easy-Icons-⭐️⭐️⭐️⭐️"><a href="#Easy-Icons-⭐️⭐️⭐️⭐️" class="headerlink" title="Easy Icons ⭐️⭐️⭐️⭐️"></a><a href="https://github.com/jamesmaguire/vscode-easy-icons" target="_blank" rel="external">Easy Icons</a> ⭐️⭐️⭐️⭐️</h3><p>I tried entirely too many icon themes. This one was my favorite. Icons per filetype is a <em>lot</em> more useful than I realized, especially in searching multiple files with similar names.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/22332883/21157849/d152203c-c1df-11e6-8afe-8e48c07808a0.PNG" alt=""></p>
+<h3 id="Eslint-⭐️⭐️⭐️⭐️"><a href="#Eslint-⭐️⭐️⭐️⭐️" class="headerlink" title="Eslint ⭐️⭐️⭐️⭐️"></a><a href="https://github.com/Microsoft/vscode-eslint" target="_blank" rel="external">Eslint</a> ⭐️⭐️⭐️⭐️</h3><p>We use eslint, so this is a must-have. </p>
+<h3 id="GitHub-⭐️⭐️⭐️⭐️"><a href="#GitHub-⭐️⭐️⭐️⭐️" class="headerlink" title="GitHub ⭐️⭐️⭐️⭐️"></a><a href="https://github.com/KnisterPeter/vscode-github" target="_blank" rel="external">GitHub</a> ⭐️⭐️⭐️⭐️</h3><p>Integration with GitHub. I really only use this to open the current file within GitHub within <code>cmd+shift+p</code> menu.</p>
+<p><img src="https://github.com/KnisterPeter/vscode-github/raw/master/images/create-pull-request.png" alt=""></p>
+<h3 id="gitignore-by-michelemelluso-⭐️"><a href="#gitignore-by-michelemelluso-⭐️" class="headerlink" title="gitignore by michelemelluso ⭐️"></a>gitignore by michelemelluso ⭐️</h3><p>Add file or folder to <code>.gitignore</code> by just right clicking on file.</p>
+<h3 id="Highlight-Matching-Tag-⭐️⭐️⭐️⭐️"><a href="#Highlight-Matching-Tag-⭐️⭐️⭐️⭐️" class="headerlink" title="Highlight Matching Tag ⭐️⭐️⭐️⭐️"></a><a href="https://github.com/vincaslt/vscode-highlight-matching-tag" target="_blank" rel="external">Highlight Matching Tag</a> ⭐️⭐️⭐️⭐️</h3><p>Highlight matching opening or closing tags</p>
+<p><img src="https://camo.githubusercontent.com/010b886fb93f49c56e4c7308ba0a5a1aca8a2db7/68747470733a2f2f692e696d67626f782e636f6d2f4455584c467657372e676966" alt=""></p>
+<h3 id="Import-Cost-⭐️⭐️⭐️⭐️⭐️"><a href="#Import-Cost-⭐️⭐️⭐️⭐️⭐️" class="headerlink" title="Import Cost ⭐️⭐️⭐️⭐️⭐️"></a><a href="https://github.com/wix/import-cost" target="_blank" rel="external">Import Cost</a> ⭐️⭐️⭐️⭐️⭐️</h3><p>Display inline in the editor the size of the imported package. Having never had this before - I’ve fallen in love.</p>
+<p><img src="https://camo.githubusercontent.com/448786fbd2913985aca86fc648e4d2513f4d8354/68747470733a2f2f66696c652d776b62636e6c6376626e2e6e6f772e73682f696d706f72742d636f73742e676966" alt=""></p>
+<h3 id="JS-Refactor-⭐️⭐️"><a href="#JS-Refactor-⭐️⭐️" class="headerlink" title="JS Refactor ⭐️⭐️"></a><a href="https://github.com/cmstead/js-refactor" target="_blank" rel="external">JS Refactor</a> ⭐️⭐️</h3><p>Javascript automated refactoring tool. I haven’t used this yet, but have great ambitions too. Especially for “Convert To Arrow Function”.</p>
+<h3 id="Multiple-cursor-case-preserve-⭐️⭐️⭐️⭐️⭐️"><a href="#Multiple-cursor-case-preserve-⭐️⭐️⭐️⭐️⭐️" class="headerlink" title="Multiple cursor case preserve ⭐️⭐️⭐️⭐️⭐️"></a><a href="https://github.com/Cardinal90/multi-cursor-case-preserve" target="_blank" rel="external">Multiple cursor case preserve</a> ⭐️⭐️⭐️⭐️⭐️</h3><p>Have you ever tried to change a single word in all variable names, but had your camelCase broken? This extension preserves selection case in these situations. I’m honestly surprised that so few people have this downloaded. I was super excited to find this.</p>
+<p><img src="https://github.com/Cardinal90/multi-cursor-case-preserve/raw/master/images/Example.gif" alt=""></p>
+<h3 id="Npm-Intellisense-⭐️⭐️⭐️⭐️"><a href="#Npm-Intellisense-⭐️⭐️⭐️⭐️" class="headerlink" title="Npm Intellisense ⭐️⭐️⭐️⭐️"></a><a href="https://github.com/ChristianKohler/NpmIntellisense" target="_blank" rel="external">Npm Intellisense</a> ⭐️⭐️⭐️⭐️</h3><p>Autocompletes npm modules in import statements.</p>
+<p><img src="https://github.com/ChristianKohler/NpmIntellisense/raw/master/images/auto_complete.gif" alt=""></p>
+<h3 id="One-Dark-Pro-⭐️⭐️⭐️⭐️"><a href="#One-Dark-Pro-⭐️⭐️⭐️⭐️" class="headerlink" title="One Dark Pro ⭐️⭐️⭐️⭐️"></a><a href="https://github.com/Binaryify/OneDark-Pro" target="_blank" rel="external">One Dark Pro</a> ⭐️⭐️⭐️⭐️</h3><p>My favorite theme! </p>
+<p><img src="https://raw.githubusercontent.com/Binaryify/OneDark-Pro/master/static/js.png" alt=""></p>
+<h3 id="Log-Output-Colorizer-⭐️⭐️⭐️"><a href="#Log-Output-Colorizer-⭐️⭐️⭐️" class="headerlink" title="Log Output Colorizer ⭐️⭐️⭐️"></a><a href="https://github.com/IBM-Cloud/vscode-log-output-colorizer" target="_blank" rel="external">Log Output Colorizer</a> ⭐️⭐️⭐️</h3><p>Adds syntax colorization for <code>*.log</code> files. People love to send me <code>.log</code> files. 😐</p>
+<p><img src="https://raw.githubusercontent.com/IBM-Bluemix/vscode-log-output-colorizer/master/github-assets/screenshot-4.jpg" alt=""></p>
+<h3 id="Path-Autocomplete-⭐️⭐️⭐️"><a href="#Path-Autocomplete-⭐️⭐️⭐️" class="headerlink" title="Path Autocomplete ⭐️⭐️⭐️"></a><a href="https://github.com/ionutvmi/path-autocomplete" target="_blank" rel="external">Path Autocomplete</a> ⭐️⭐️⭐️</h3><p>Provides path completion.</p>
+<p><img src="https://raw.githubusercontent.com/ionutvmi/path-autocomplete/master/demo/path-autocomplete.gif" alt=""></p>
+<h3 id="Search-node-modules-⭐️⭐️⭐️⭐️"><a href="#Search-node-modules-⭐️⭐️⭐️⭐️" class="headerlink" title="Search node_modules ⭐️⭐️⭐️⭐️"></a><a href="https://github.com/jasonnutter/vscode-search-node-modules" target="_blank" rel="external">Search node_modules</a> ⭐️⭐️⭐️⭐️</h3><p>Since <code>node_modules</code> are excluded from my global search, I need a way to dig into them when they have bugs. This is an ok way to do that. I wish I could search for specific code within the node_module more easily though.</p>
+<p><img src="https://raw.githubusercontent.com/jasonnutter/vscode-search-node-modules/master/img/demo.gif" alt=""></p>
+<h3 id="SVG-Viewer-⭐️⭐️"><a href="#SVG-Viewer-⭐️⭐️" class="headerlink" title="SVG Viewer ⭐️⭐️"></a><a href="https://github.com/cssho/vscode-svgviewer" target="_blank" rel="external">SVG Viewer</a> ⭐️⭐️</h3><p>You can actually view SVG files in your editor.</p>
+<p><img src="https://github.com/cssho/vscode-svgviewer/raw/master/img/from_context.gif" alt=""></p>
+<h3 id="Swig-⭐️"><a href="#Swig-⭐️" class="headerlink" title="Swig ⭐️"></a><a href="https://marketplace.visualstudio.com/items?itemName=zhutian.swig" target="_blank" rel="external">Swig</a> ⭐️</h3><p>Swig support. Yes, we have some swig templates. We need to move off of them. </p>
+<h3 id="TODO-Highlight-⭐️⭐️⭐️"><a href="#TODO-Highlight-⭐️⭐️⭐️" class="headerlink" title="TODO Highlight ⭐️⭐️⭐️"></a><a href="https://github.com/wayou/vscode-todo-highlight" target="_blank" rel="external">TODO Highlight</a> ⭐️⭐️⭐️</h3><p>Highlights <code>TODO</code> and <code>FIXME</code> in code. I didn’t realize how many <code>TODO</code>s were in my code until I installed this. 😅</p>
+<p><img src="https://github.com/wayou/vscode-todo-highlight/raw/master/assets/material-night-eighties.png" alt=""></p>
+<h3 id="Version-Lens-⭐️⭐️⭐️⭐️⭐️"><a href="#Version-Lens-⭐️⭐️⭐️⭐️⭐️" class="headerlink" title="Version Lens ⭐️⭐️⭐️⭐️⭐️"></a><a href="https://github.com/vscode-contrib/vscode-versionlens" target="_blank" rel="external">Version Lens</a> ⭐️⭐️⭐️⭐️⭐️</h3><p>Shows package version information for npm and bower. Amazing. What I’ve always wanted.</p>
+<p><img src="https://github.com/vscode-contrib/vscode-versionlens/raw/master/images/animated-preview.gif" alt=""></p>
+<h3 id="Random-Data-Generator-⭐️⭐️"><a href="#Random-Data-Generator-⭐️⭐️" class="headerlink" title="Random Data Generator ⭐️⭐️"></a><a href="https://github.com/jrebocho/vscode-random" target="_blank" rel="external">Random Data Generator</a> ⭐️⭐️</h3><p>Generates random data directly into VS Code. I was hoping this would be useful in my fixtures.</p>
+<p><img src="https://raw.githubusercontent.com/jrebocho/vscode-random/master/images/vscode-random-screen.gif" alt=""></p>
+<h1 id="Keybindings"><a href="#Keybindings" class="headerlink" title="Keybindings"></a>Keybindings</h1><p>The quickopen is something really weird and I wasn’t having it. Remapped this to <code>cmd+t</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;key&quot;: &quot;cmd+t&quot;, &quot;command&quot;: &quot;workbench.action.quickOpen&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p>Also, I needed to map my ‘go to current file in explorer’ key. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;key&quot;: &quot;shift+cmd+\\&quot;, &quot;command&quot;: &quot;editor.action.jumpToBracket&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p><code>cmd+shift+e</code> - shows editor in left hand side. Just memorize this.<br><code>cmd+shift+e</code> - shows extensions in left hand side.</p>
+<h1 id="vscode-settings-json"><a href="#vscode-settings-json" class="headerlink" title="vscode settings.json"></a>vscode settings.json</h1><p>This is my <code>settings.json</code> within the <code>vscode</code> folder. This ensures that eslint auto fixes on save, <em>but</em> lets me put a <code>debugger</code> in my code!</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"git.ignoreLimitWarning"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"eslint.enable"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"eslint.alwaysShowStatus"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"eslint.autoFixOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"eslint.options"</span>: &#123;</span><br><span class="line">    <span class="attr">"rules"</span>: &#123;</span><br><span class="line">      <span class="attr">"no-debugger"</span>: <span class="string">"off"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h1><p>These are my settings. Some of these are extension specific. Notice this will turn on <a href="https://on.cypress.io/configuration#IntelliSense" target="_blank" rel="external">Intellisense for <code>cypress.json</code> files</a>.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"editor.fontFamily"</span>: <span class="string">"Fira Code, Monaco, 'Courier New', monospace"</span>,</span><br><span class="line">    <span class="attr">"editor.fontSize"</span>: <span class="number">14</span>,</span><br><span class="line">    <span class="attr">"editor.lineHeight"</span>: <span class="number">24</span>,</span><br><span class="line">    <span class="attr">"editor.fontLigatures"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.tabSize"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.enabled"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnPaste"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.wordWrap"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"explorer.openEditors.visible"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"editor.multiCursorModifier"</span>: <span class="string">"ctrlCmd"</span>,</span><br><span class="line">    <span class="attr">"editor.snippetSuggestions"</span>: <span class="string">"top"</span>,</span><br><span class="line">    <span class="attr">"editor.renderWhitespace"</span>: <span class="string">"none"</span>,</span><br><span class="line">    <span class="attr">"editor.renderControlCharacters"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"One Dark Pro"</span>,</span><br><span class="line">    <span class="attr">"bold_folder_labels"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"font_options"</span>: [</span><br><span class="line">        <span class="string">"gray_antialias"</span>,</span><br><span class="line">        <span class="string">"subpixel_antialias"</span></span><br><span class="line">    ], </span><br><span class="line">    <span class="attr">"indent_guide_options"</span>: [</span><br><span class="line">        <span class="string">"draw_normal"</span>,</span><br><span class="line">        <span class="string">"draw_active"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"overlay_scroll_bars"</span>: <span class="string">"enabled"</span>,</span><br><span class="line">    <span class="attr">"workbench.activityBar.visible"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"workbench.startupEditor"</span>: <span class="string">"newUntitledFile"</span>,</span><br><span class="line">    <span class="attr">"eslint.enable"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"sublimeTextKeymap.promptV3Features"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"json.schemas"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"fileMatch"</span>: [</span><br><span class="line">                <span class="string">"cypress.json"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"url"</span>: <span class="string">"https://on.cypress.io/cypress.schema.json"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"fileMatch"</span>: [</span><br><span class="line">                <span class="string">"/bower.json"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"url"</span>: <span class="string">"http://json.schemastore.org/bower"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"workbench.statusBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workbench.iconTheme"</span>: <span class="string">"easy-icons"</span>,</span><br><span class="line">    <span class="attr">"files.associations"</span>: &#123;</span><br><span class="line">        <span class="attr">"*.jsx"</span>: <span class="string">"javascriptreact"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Intellisense-for-Cypress"><a href="#Intellisense-for-Cypress" class="headerlink" title="Intellisense for Cypress"></a>Intellisense for Cypress</h1><p>Add <code>/// &lt;reference types=&quot;Cypress&quot; /&gt;</code> to top of <code>.js</code> or <code>.ts</code> test files.</p>
+<p><img src="https://docs.cypress.io/img/guides/typescript-intellisense-with-reference.d0d2b2de.gif" alt=""></p>
+<h1 id="Gotchas"><a href="#Gotchas" class="headerlink" title="Gotchas"></a>Gotchas</h1><h2 id="jsconfig-json"><a href="#jsconfig-json" class="headerlink" title="jsconfig.json"></a>jsconfig.json</h2><p>I have to add this inside the source folder of any project where I am used mobx, just to avoid the warning for Experimental Decorators. Not happy about it, but whatever.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">      <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><p>Search was weird at first and took getting used to. But now I love it more than atom. </p>
+<p><img src="https://user-images.githubusercontent.com/1271364/37787077-902e86d8-2dd4-11e8-9d90-6657abaccd1b.png" alt=""></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/Deleting-Objects-in-JavaScript/" data-toggle="tooltip" data-placement="top" title="Deleting Objects in JavaScript">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "jennifer-shehane";
+    var disqus_identifier = "http://jennifershehane.com/Moving-to-VSCode/";
+    var disqus_url = "http://jennifershehane.com/Moving-to-VSCode/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/jennifershehane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jennifer-shehane">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Jennifer Shehane 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jennifershehane.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jennifershehane.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
