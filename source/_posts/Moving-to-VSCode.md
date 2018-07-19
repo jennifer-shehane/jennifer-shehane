@@ -146,6 +146,8 @@ Generates random data directly into VS Code. I was hoping this would be useful i
 
 ![](https://raw.githubusercontent.com/jrebocho/vscode-random/master/images/vscode-random-screen.gif)
 
+### [Regex Previewer](https://marketplace.visualstudio.com/items?itemName=chrmarti.regex)
+
 
 # Keybindings
 
@@ -191,7 +193,7 @@ These are my settings. Some of these are extension specific. Notice this will tu
     "editor.fontFamily": "Fira Code, Monaco, 'Courier New', monospace",
     "editor.fontSize": 14,
     "editor.lineHeight": 24,
-    "editor.fontLigatures": true,
+    "editor.fontLigatures": false,
     "editor.tabSize": 2,
     "editor.minimap.enabled": false,
     "editor.formatOnPaste": true,
@@ -203,6 +205,9 @@ These are my settings. Some of these are extension specific. Notice this will tu
     "editor.renderControlCharacters": true,
     "workbench.colorTheme": "One Dark Pro",
     "bold_folder_labels": true,
+    "eslint.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true,
     "font_options": [
         "gray_antialias",
         "subpixel_antialias"
@@ -213,8 +218,13 @@ These are my settings. Some of these are extension specific. Notice this will tu
     ],
     "overlay_scroll_bars": "enabled",
     "workbench.activityBar.visible": false,
+    "workbench.editor.enablePreview": false,
     "workbench.startupEditor": "newUntitledFile",
-    "eslint.enable": false,
+    "workbench.colorCustomizations": {
+        "editorError.foreground": "#E06C6D",
+        "editorWarning.foreground": "#D19A66",
+        "editorInfo.foreground": "#354b6e",
+    },
     "sublimeTextKeymap.promptV3Features": true,
     "json.schemas": [
         {
@@ -234,7 +244,32 @@ These are my settings. Some of these are extension specific. Notice this will tu
     "workbench.iconTheme": "easy-icons",
     "files.associations": {
         "*.jsx": "javascriptreact"
-    }
+    },
+    "cSpell.userWords": [
+        "Unmount",
+        "devtools",
+        "errored",
+        "favicon",
+        "gravatar",
+        "mobx",
+        "noopener",
+        "noreferrer",
+        "readonly",
+        "xdomain"
+    ],
+    // Upper size limit, in KB, that will count a package as a small package
+    "importCost.smallPackageSize": 50,
+    // Upper size limit, in KB, that will count a package as a medium package
+    "importCost.mediumPackageSize": 100,
+    // Decoration color for small packages
+    "importCost.smallPackageColor": "#456240",
+    // Decoration color for medium packages
+    "importCost.mediumPackageColor": "#7b6a3d",
+    // Decoration color for large packages
+    "importCost.largePackageColor": "#7b433d",
+    // File extensions to be parsed by the Typescript parser
+    // Display the 'calculating' decoration
+    "importCost.showCalculatingDecoration": false
 }
 ```
 
